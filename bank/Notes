@@ -1,0 +1,32 @@
+
+
+Model
+-------
+
+ Account
+ 
+   num
+   name
+   balance
+   status
+   type
+
+
+Layers
+--------
+
+  --> view-layer
+  --> business/service-layer
+  --> data-layer
+  --> infra-layer
+  
+  
+  e.g
+  
+    Service-Layer  
+    
+    1. TxrService  : doTxr(from,to,money)
+    
+    Data-Layer
+    
+    1. AccountRepository  : find() , update()

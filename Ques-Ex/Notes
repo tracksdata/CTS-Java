@@ -1,0 +1,33 @@
+
+
+
+
+  
+
+
+   hashing(car1.model)
+   {
+   
+   //......
+   
+   return 22;
+   
+   } 
+ 
+ 
+ 
+ 
+ 
+ 
+ car-1 : {model:'BMW',color="'black'}  --> car-1 : {model:'ABC',color="'white'}
+ 
+ 
+ 
+ 
+ 
+ car-3 : {model:'Audi',color="'black'}
+ 
+ 
+ 
+ 
+ 

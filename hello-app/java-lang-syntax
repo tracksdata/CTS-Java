@@ -1,0 +1,354 @@
+
+
+
+  1. Java-proj
+  -------------
+  
+   root
+   |
+   |
+   |---p1  ( .java / .class )
+   |
+   |---p2
+   | |
+   | |--p21
+   |
+   
+   ---------------------------------------------
+   
+   2. Java-File
+   
+   
+   Abc.java
+   ----------------------------------------
+   |
+   | // package dec ( 1 )
+   | // import statements ( n )
+   |
+   | // public Abc (class /interface/enum/annotation ) ( 1 )
+   |
+   | // default types ( n )
+   |-----------------------------------------
+   
+   
+   ---------------------------------------------
+   
+   
+   3. package dec
+   
+     why we need ?
+     
+     to organize java files as modules
+     
+     adv:
+     
+     --> easy to maintain
+     --> to avoid type-name conflicts
+   
+   syntax:
+   -------
+   
+   package root;
+           root.sub1;
+           root.sub1.sub2;
+   
+   e.g 
+   
+       company : CTS
+       type    : com
+       project-name : EM
+       module-name  : emp
+       class-name   : Employee
+   
+    guide-line to write package name for java-classes
+   
+    package c-type.c-name.p-name.m-name;
+    e.g
+    package com.cts.em.emp;
+    
+   
+    ---------------------------------------------
+    
+    4. import statements
+    
+    
+    sample-app
+    |
+    |--p1 ( A.java , B.java )
+    |
+    |--p2 ( B.java , C.java )
+    |
+    |--p3 ( C.java)
+    
+    
+    e.g A.java
+    
+    package p1;
+    
+    //import p2.C;
+    //import p2.D;
+    
+    //or
+    
+    import p2.*;
+    import p3.*;
+    
+    public class A{
+    B b;
+    p3.C c;
+    D d;
+    }
+    
+    
+    JDK 1.5 --> static import
+    ------------------------
+    
+    import static java.lang.System.*;
+    
+    
+    
+    
+    ---------------------------------------------
+    
+    
+    what is object ?
+    
+    --> data/info/attr/prop       ( State )
+    --> func/method/work/oprn     ( Behavior )
+    --> location/address/refrence ( Identity )
+    
+    obj ====> SBI
+    
+    
+    we need many similar-objs ( e.g 15 emp-obj )
+    
+    15*SBI  ==> 15 employee objs
+    
+    how to create many similar-objs ?
+    
+    we need an obj-design-template ( class )
+    
+    class
+    ------
+    
+     --> description ( state & behav ) of similar objs.
+     
+     ------------------------------------------------
+     
+     
+     class  ---> instance ( obj )
+     
+     ------------------------------------------------
+    
+     OO concepts
+    -------------
+    
+    a. Abstraction ( Interface / Front-End )
+    
+    	why we need ?
+    	
+    	--> should be easy to use/lean by dependent-obj
+    	--> for loose-coupling
+    	
+    
+    b. Encapsulation ( Implementation / Back-end )
+    
+        why we need?
+        
+         --> hide complexity
+         --> to protect some-thing
+    
+    
+    c. Inheritance
+    
+    
+         why we need ?
+         
+         --> to re-use common state/behav.
+         --> to extend with new features
+         
+    d. polymorphism
+    
+    
+         wh we need ?
+         
+         to acheive -
+         'closed for modification and open for extension' OO principle       
+    
+    -----------------------------------------------------------
+    
+    java --> OO lang
+    
+    -----------------------------------------------------------
+    
+    
+     5. class - syntax
+     
+	_______		__________    class Name [extends] BaseClass{
+	[public]    [abstract]                [implements] I1,I2
+	[      ]	[final   ]	  // state --> variables
+			    [strictfp]		      
+				[synchronized]// constructor(s)
+						      
+						      // behavior --> methods
+						     
+						      // inner-class(s)
+	------------------------					      
+	[public]	[static]				      
+	[private]					     
+	[protected]				     }
+	[         ]		    
+	    
+-----------------------------------------------------------------    
+    
+    
+    6. variables  --> datatypes 
+    
+     data-type
+     
+     --> simple  ( primitives )  : values   ( 8 )
+     --> complex type ( reference ) : objects ( class , interface , enum , annotation )
+   
+   
+   	class Employee{
+   	
+	   	static String trainer; // class.stactic var
+	   	int id; // object/instance var
+	   	
+   		void m(){
+   			int loc;
+   		}
+   	} 
+   	
+   	  
+     syntax
+     ------
+     
+     
+	_______	    __________ DataType varName=[value/object];  
+	[public]	[static]
+	[protected]	[final ]
+	[private]	[transient]
+	[	    ]   [volatile]
+    
+       local-var
+    -----------------------
+    Nil         [final ] only
+    
+    
+   
+-----------------------------------------------------------------    
+
+  7. method  --> behavior
+  
+  	
+______  	  _________      ReturnType methodName([args]) [throws] CheckedException{
+[public]  	  [static]       
+[private]	  [final ]	         // A,R,L and assigment oprns
+[protected]	  [strictfp]	     // conditional exe
+[        ]	  [synchronized]	 // looping exe
+	          [abstract]	     // invoking other behav.
+	          [native]	         
+	  	     					 [return result];
+	  	         
+  	         }
+    
+    
+    
+-----------------------------------------------------------------    
+    
+   8. constructor - syntax
+   
+       why we need ?
+   
+   
+        in java , obj creation is 2 step process
+    
+        step-1 : dynamic memory allocation  : 'new'
+        step-2 : initialize that memory with obj's data ( default/given value ) : 'constructor'
+        
+        
+        
+        syntax:
+        
+		__________  ClassName([arg]) [throws] Exception{
+		[public]        super();
+		[private]        // obj initialization logic
+		[protected]        
+		[         ] }
+		        
+   
+-----------------------------------------------------------------    
+    
+    9. interface
+    
+    
+    _______ ______ interface Name [extends] I1,I2{
+    
+				    // constant-state
+				    public static final DataType VAR_NAME=[value];
+				    
+				    // abstract-bevav
+				    
+				    public abstract ReturnType methodName([args])[throws]Exception
+				    
+				    // JDK-1.8
+				    
+				    public static void m(){
+				    
+				    }
+				    
+				    public default void m2(){
+				    
+				    }
+				    
+				    
+				    }
+				    
+    		    
+   -----------------------------------------------------------------
+   
+   10. enum
+   
+   
+   ______ _____ enum Gender{
+   
+   MALE,FEMALE
+   
+   }
+   
+   
+    -----------------------------------------------------------------
+    
+    11. annotation   --> For declarative programming
+    
+    
+    _____  _____ @interface Name{
+
+                 // properties
+                 
+                 String prop();
+
+                 }    
+    
+     -----------------------------------------------------------------
+     
+     
+     Java Naming Conventions
+     -----------------------
+     
+     
+     keywords   --->   lower-case
+     
+     
+     package    --->   lower-case
+     
+     Type       --->   pascal-case  :  A____B____C____
+     
+     var/method --->   camel-case   :  _____A____B_____ 
+     
+     constants  --->   upper-case
+     
+     
+     -----------------------------------------------------------------
+    

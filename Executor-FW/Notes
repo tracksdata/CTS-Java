@@ -1,0 +1,89 @@
+
+
+
+Standard Java threading has some downsides:
+
+
+--> Java's low-level concurrency primitives
+    (synchronized, volatile, wait(), notify(), and notifyAll()) 
+    aren't easy to use correctly.
+    
+--> Relying on synchronized to coordinate 
+    access between threads leads to performance issues 
+    that affect application scalability, a requirement
+    for many modern applications.    
+    
+--> Java's basic threading capabilities are too low level.
+
+     need higher level constructs like semaphores and thread pools, 
+     which Java's low-level threading capabilities don't offer.     
+     
+     
+     
+     soln : Concurrency Utilities
+     
+     
+     -> small Frameworks
+     
+		     Executor framework, 
+		     synchronizer, 
+		     concurrent collections, 
+		     locks,
+		     atomic variables,
+		     Fork/Join
+		     
+		     
+    ----------------------------------------------------------------------
+    
+    
+    
+    
+    java.util.concurrent
+    
+    
+    --> includes semaphores, barriers, thread pools, and concurrent hashmaps.
+    
+    java.util.concurrent.atomic
+    
+    --> contains low-level utility classes that support lock-free thread-safe programming
+        on single variables.
+    
+    java.util.concurrent.locks
+    
+    --> contains low-level utility types for locking and waiting for conditions,
+         which are different from using Java's low-level synchronization and monitors.
+    
+    
+    
+    ----------------------------------------------------------------------
+    
+     Executor framework:
+     
+     
+    ---------------------------------------------------------------------
+     
+     
+     
+    Synchronizers:
+    
+    
+    --> semaphore, cyclic barrier, countdown latch, exchanger, and phaser synchronizers
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    		     

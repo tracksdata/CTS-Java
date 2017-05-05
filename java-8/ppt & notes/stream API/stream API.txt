@@ -1,0 +1,267 @@
+
+
+    Java Stream API    ( java.util.stream.* )
+	----------------------------------------------
+	
+	
+	
+	 "Java collections"
+	 
+	 
+	 collections oprns == SQL
+	  
+	 e.g
+	 
+	 
+	 "SELECT id, MAX(value) from transactions".
+
+			
+	 "we don’t need to implement how to calculate 
+	  the maximum value
+	 (for example, using loops and a variable to
+	 track the highest value).
+	 We only express what we expect. 
+
+     
+	 how can we process really large 
+	 collections efficiently?
+	 
+	   soln : "parallel processing", 
+	   but writing parallel code is hard and error-prone. 
+	 
+	 
+	 
+	 New API :- Stream API
+	 
+	 --> process data in a declarative way
+	 --> streams can leverage multi-core architectures
+         without you having to write a single line of multithread code.
+	 
+	 Java SE 7
+	 ------------
+  
+       List<Transaction> groceryTransactions = new Arraylist<>();
+		for(Transaction t: transactions){
+		  if(t.getType() == Transaction.GROCERY){
+			groceryTransactions.add(t);
+		  }
+		}
+		Collections.sort(groceryTransactions, new Comparator(){
+		  public int compare(Transaction t1, Transaction t2){
+			return t2.getValue().compareTo(t1.getValue());
+		  }
+		});
+		List<Integer> transactionIds = new ArrayList<>();
+		for(Transaction t: groceryTransactions){
+		  transactionsIds.add(t.getId());
+		} 
+	  
+	  Java SE-8 - streams
+	  --------------------
+	  
+	  List<Integer> transactionsIds = 
+	  transactions.stream()
+                .filter(t -> t.getType() == Transaction.GROCERY)
+                .sorted(comparing(Transaction::getValue).reversed())
+                .map(Transaction::getId)
+                .collect(toList());
+	  
+	 
+	  transactions ==>FILTER ==> SORTED ==> MAP  ==> collect
+	  
+	  
+	  
+	  Parallel Stream
+	  --------------------
+	  
+	  List<Integer> transactionsIds = 
+      transactions.parallelStream()
+                .filter(t -> t.getType() == Transaction.GROCERY)
+                .sorted(comparing(Transaction::getValue).reversed())
+                .map(Transaction::getId)
+                .collect(toList());
+	  
+	  -------------------------------------------------------------------------------
+	  
+	  
+	  What’s the definition of a stream? 
+	  
+	  "a sequence of elements from a source 
+	   that supports aggregate operations.”
+	   
+	   
+	   Sequence of elements :  sequenced set of values of a specific element type.
+	   source               :  Streams consume from a data-providing source 
+	                           such as collections, arrays, or I/O resources        
+	   aggregate operations :  filter, map, reduce, find, match, sorted, and so on. 
+	   
+	   
+	   stream's importent features
+	   
+	   --> Pipelining 
+	   --> Internal iteration
+	   
+	   ref - pic
+	   
+	   
+	   
+	   ------------------------------------------------------
+	   
+	   Streams Versus Collections
+	   ---------------------------
+	   
+	   
+	   "collections are about data and 
+	    streams are about computations"
+	  
+	  
+	   e.g movie stored on a DVD
+	   
+	   
+	   collection supports external-iteration.
+	   Stream supports internal-iteration.
+
+	   
+	    Exteranl-Iteration
+		---------------------
+	   
+	    List<String> transactionIds = new ArrayList<>(); 
+		for(Transaction t: transactions){
+			transactionIds.add(t.getId()); 
+		}	
+		
+		Internal Iteration
+		-----------------------
+		
+		List<Integer> transactionIds = 
+		transactions.stream()
+                .map(Transaction::getId)
+                .collect(toList());
+	   
+	   
+	  ---------------------------------------------------------------
+	  
+	  Stream Operations
+	  -----------------
+	  
+	  -filter, sorted, and map, which can be connected 
+	   together to form a pipeline
+	  -collect, which closed the pipeline and returned a result 
+		  
+		  a. intermediate operations
+		  b. terminal operations
+		  
+		  
+	 
+	working with streams, in general, involves three things: 
+	
+	-> A datasource (such as a collection)
+    	on which to perform a query
+	-> A chain of intermediate operations,
+    	which form a stream pipeline
+	-> One terminal operation,
+    	which executes the stream pipeline
+	   and produces a result .
+	   
+	 
+	 
+	 Filtering. 
+	 ---------------
+	  
+	 a. filter(Predicate) 
+	 b. distinct
+	 c. limit(n)
+	 d. skip(n)
+	 
+	 
+	 Finding and matching
+	 ------------------------
+	 
+	 anyMatch, allMatch, noneMatch
+	 
+	 
+	 boolean expensive =
+     transactions.stream()
+                .allMatch(t -> t.getValue() > 100);
+	  
+	  
+	 
+	 
+	 
+	 findFirst ,findAny
+	 
+	 Optional<Transaction> = 
+     transactions.stream()
+                .filter(t -> t.getType() == Transaction.GROCERY)
+                .findAny();
+	  
+	  
+	  
+	  Mapping.
+	  ----------
+	  
+	  List<String> words = Arrays.asList("Oracle", "Java", "Magazine");
+	  List<Integer> wordLengths = 
+	  words.stream()
+         .map(String::length)
+         .collect(toList());
+	  
+	  
+	  Reducing
+	  ---------------
+	  
+	  int sum = numbers.stream().reduce(0, (a, b) -> a + b);
+	  
+	  
+	  An initial value, here 0
+	  A BinaryOperator<T> to combine two elements 
+	  and produce a new value 
+	  
+	  
+	  
+	  int product = numbers.stream().reduce(1, (a, b) -> a * b);
+	  int product = numbers.stream().reduce(1, Integer::max);
+	  
+	  
+	  
+	  Numeric Streams
+	  ----------------
+	  
+	  int statement = 
+      transactions.stream()
+                .map(Transaction::getValue)
+                .sum(); // error since Stream has no sum method
+	  
+	  int statementSum = 
+      transactions.stream()
+                .mapToInt(Transaction::getValue)
+                .sum(); // works!
+	  
+	  
+	  Range Stream
+	  -------------
+	  
+	  IntStream oddNumbers = 
+      .rangeClosed(10, 30)
+             .filter(n -> n % 2 == 1);
+			 
+	  -----------------------------------------------------
+	  
+	  
+	  Building Streams
+	  -----------------
+	  
+	  Stream<Integer> numbersFromValues = Stream.of(1, 2, 3, 4);
+	  int[] numbers = {1, 2, 3, 4};
+	  IntStream numbersFromArray = Arrays.stream(numbers);
+	  
+	  
+	  ---------------------------------------------------------------------
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  

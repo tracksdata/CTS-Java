@@ -1,0 +1,48 @@
+
+
+  Java 8 : Big Changes
+  ------------------------
+  
+  1. Project lambda
+  
+      Functional Programming with lambda Expression.
+	  
+  2. New Date/Time API
+
+      Simpler Management of dates and times.
+
+  3. Stream API
+
+      Improved collection Mangement,parallel processing
+
+  4. Nashorn Javascript Engine.
+  
+      Program in javascript , using java classes and objects.
+	  
+  5. Concurrency enhancements
+
+  
+   Java-8  : Smaller changes
+   ---------------------------
+   
+   1. Joining String values
+   
+       Two new approaches to concatenating literal strings
+	  
+   2. Aggregating Numbers
+
+      Number classes ( Integer,etc) have new methods
+
+   3. Working with files
+
+      New conveneince methods, BASE64 management.
+      
+   
+   
+   
+   
+  
+
+	  
+  
+   

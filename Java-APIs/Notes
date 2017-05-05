@@ -1,0 +1,63 @@
+
+
+  Java-Appln  ===> our-code + Java APIs + Third-party-code
+  
+  
+  ---------------------------------------------------------
+  
+  
+  standard APIs
+  
+  java,javax   --> packages
+  
+  ----------------------------------------------------------
+  
+  java
+      .lang.*;
+      .util.*   --> java data-structures ( collections )
+      .io.*     --> input/output
+      .sql.*    --> JDBC API
+      .net.*    --> Networking API
+      .rmi.*    --> Remote Method Invocation
+      
+      .awt.*    --> GUI
+      
+      etc...........
+      
+  javax.swing.* --> GUI    
+      
+  javax.
+        servlet.*  --> servlet programs
+        .ejb.*     --> server-side business comp
+        
+        etc.........
+        
+        
+---------------------------------------------------------------
+
+
+  java.lang.*
+  
+    --> string handling
+    --> multi-threading
+    --> wrapper-classes
+    --> System
+    --> Runtime
+    --> Class
+    
+    --> Reflection API
+    
+ ---------------------------------------------------------------
+ 
+ java.util.*
+ 
+ 
+    --> Collection F.W
+    
+ ----------------------------------------------------------------      
+            
+      
+      
+      
+      
+  

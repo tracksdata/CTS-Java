@@ -1,0 +1,57 @@
+
+
+data-structures
+----------------
+
+  organizing memory to store data , on that we can do CRUDSS oprns.
+  
+  
+  
+  types of data-structures
+  
+  1. primary 
+  
+     --> single data-element
+  
+ 
+  2. secondary
+  
+      --> multi data-elements
+      
+      
+      a. linear
+      
+        1. array
+        2. linkedlist
+        3. stack
+        4. queue
+      
+         -----
+         
+         Hashtable
+      
+      b. non-linear
+      
+        1. Tree
+        2. Graph
+      
+      
+    -----------------------------------------
+    
+    program - performance
+    
+    --> time
+    --> space/memory
+    
+    --------------------------------------  
+      
+      
+      
+      
+      
+      
+      
+      
+      
+  
+    

@@ -1,0 +1,488 @@
+
+
+
+Lambda Expression
+==================
+
+   
+  A lambda expression is an unnamed block of code (or an unnamed function)
+  with a list of formal parameters and a body.
+  
+  The body of a lambda expression can be a block 
+  statements or an expression.
+  
+  An arrow (->) is used to separate the list of parameters and the body.
+  
+  
+  Lambda : Function Abstraction.  
+  
+
+Lambda Expressions in Java
+---------------------------
+
+ // Takes an int parameter and returns the parameter value incremented by 1
+ (int x) -> x + 1
+ 
+ // Takes two int parameters and returns their sum
+ (int x, int y) -> x + y
+ 
+ // Takes two int parameters and returns the maximum of the two
+ (int x, int y) -> { int max = x > y ? x : y;
+					return max;
+				   }
+
+ // Takes no parameters and returns void
+ () -> { }
+ 
+ // Takes no parameters and returns a string "OK"
+ () -> "OK"
+ 
+ // Takes a String parameter and prints it on the standard output
+ (String msg) -> { System.out.println(msg); } 
+ 
+ // Takes a parameter and prints it on the standard output
+ msg -> System.out.println(msg)
+ 
+ // Takes a String parameter and returns its length
+ (String str) -> str.length()
+ 
+ 
+ -------------------------------------------------------------------------------
+ 
+ 
+ "A lambda expression is not a method,
+ although its declaration looks similar to a method. as the name suggests, 
+ a lambda expression is an expression
+ that represents an instance of a functional interface."
+ 
+ 
+ The type of a lambda expression is a functional 
+ interface type,When the abstract method of the functional interface is called,
+ the body of the lambda expression is executed.
+ 
+	 e.g
+	 
+	 (String str)->str.length()
+	 
+	 
+	 @FunctionalInterface
+	 interface StringToIntMapper(){
+	 int map(Strig str);
+	 }
+	 
+	 
+	 StringToIntMapper mapper = (String str) -> str.length();
+	 
+	 String name = "naga";
+	 int mappedValue = mapper.map(name);
+	 System.out.println("name=" + name + ", mapped value=" + mappedValue);
+	 
+ 
+ ------------------------------------------------------------------------------
+ 
+ why do we need Lambda Expressions ?
+ 
+ --> Static analysis of the program logic is difficult
+     as the program state depends on the order in which the code will be executed.
+	
+ --> Programming with mutating objects also poses a challenge
+     in concurrent programming 	.
+	 
+ --> Challenge to programmers to write more parallel programs.
+     ( java-7 , fork/join framework , which was not easy to use )
+	 
+ --> To support Functional Programming in Java.	
+
+   Functional Programming
+   ------------------------   
+   
+   Functions do not modify data, 
+   including its input, thus producing no side-effects;
+   for this reason,
+   the order of the execution of functions does not 
+   matter in functional programming.
+   
+   In FP,a higher order function is an anonymous function that 
+   can be treated as a data object.
+   
+   A closure is a higher order function packaged with 
+   its defining environment.
+	
+   FP , suitable in concurrent, parallel,and event-driven programming. 	
+
+   
+   Lambda expressions to implement closures in Java	
+  
+   use :
+   
+   Anonymous classes use a bulky syntax. Lambda expressions 
+   use a very concise syntax to achieve the same result.
+
+   Lambda expressions are not a complete replacement for anonymous classes. 
+
+-------------------------------------------------------------------------------   
+	
+   Syntax for Lambda Expressions
+   -----------------------------
+   
+   (<LambdaParametersList>) -> { <LambdaBody> }
+   
+   
+   
+  Examples of Lambda Expressions and Equivalent Methods
+   
+  1.
+  
+   (int x, int y) -> {return x + y;}
+   
+   int sum(int x, int y) {
+   return x + y;
+   }
+   
+   
+  2.
+  
+   (Object x) -> {
+	return x;
+	}
+
+	Object identity(Object x) {
+	return x;
+	}
+  
+  3. 
+  
+	(int x, int y) -> {
+	if ( x > y) {
+	return x;
+	}
+	else {
+	return y;
+	}
+	}
+	
+	int getMax(int x, int y) {
+	if ( x > y) {
+	return x;
+	}
+	else {
+	return y;
+	}
+	}
+  
+  4.
+  
+	(String msg) -> {
+	System.out.println(msg);
+	}
+	
+	void print(String msg) {
+	System.out.println(msg);
+	}
+	
+	
+ 5.
+
+	() -> {
+	System.out.println(LocalDate.now());
+	}
+	
+	void printCurrentDate() {
+	System.out.println(LocalDate.now());
+	}
+	
+ 6.
+
+	() -> {
+	// No code goes here
+	}
+	
+	void doNothing() {
+	// No code goes here
+	} 
+   
+   
+-----------------------------------------------------------
+   
+   Omitting Parameter Types
+   -------------------------
+   
+   // Types of parameters are declared
+     (int x, int y) -> { return x + y; }
+	 
+   // Types of parameters are omitted
+     (x, y) -> { return x + y; }	 
+   
+   // A compile-time error
+	 (int x, y) -> { return x + y; }
+   
+ ------------------------------------------------------------
+
+ LE - types
+
+  a. implicit-type ( param without type dec ). 
+  a. explicit-type ( param with type dec ).
+   
+ -------------------------------------------------------------
+ 
+   Declaring a Single Parameter
+   -----------------------------
+   
+   // Declares the parameter type
+	 (String msg) -> { System.out.println(msg); }
+ 
+   // Omits the parameter type
+	 (msg) -> { System.out.println(msg); }
+	 
+   // Omits the parameter type and parentheses
+	 msg -> { System.out.println(msg); }
+ 
+   // Omits parentheses, but not the parameter type, which is not allowed.
+	String msg -> { System.out.println(msg); }
+	
+ ----------------------------------------------------------------
+
+    Declaring No Parameters
+	
+	// Takes no parameters
+	() -> { System.out.println("Hello"); }
+	
+ ------------------------------------------------------------------
+
+    Parameters with Modifiers
+	
+	(final int x, final int y) -> { return x + y; }
+	
+    (int x, final int y) -> { return x + y; }
+	
+	// will not compile
+	(final x, final y) -> { return x + y; }  
+ 
+ -------------------------------------------------------------------
+ 
+   Declaring Body of Lambda Expressions
+   ------------------------------------
+   
+	// Uses a block statement. Takes two int parameters and returns their sum.
+	(int x, int y) -> { return x + y; }
+
+	// Uses an expression. Takes a two int parameters and returns their sum.
+	(int x, int y) -> x + y
+
+
+	// Uses a block statement
+	(String msg) -> { System.out.println(msg); }
+	// Uses an expression
+	(String msg) -> System.out.println(msg)
+  
+  ---------------------------------------------------------------------------
+  
+  Target Typing
+  ==============
+  
+  Every lambda expression has a type, which is a functional interface type.
+  
+  or
+  
+  A lambda expression represents an instance of a functional interface.
+  
+  e.g
+  
+     (x,y) -> x+y
+	 
+	 What is the type of this lambda expression?
+	 
+	 In other words, an instance of which functional interface does this 
+	 lambda expression represent? 
+	 
+	 
+	 
+	 Two types of expressions in Java:
+		
+		->Standalone Expressions 	
+		->Poly Expressions ( compiler determines the type of the expression)
+	  
+	 All lambda expressions in Java are poly expressions.
+	 
+	 The compiler infers the type of a lambda expression.
+	 
+	 The context in which a lambda expression is used expects 
+     a type, which is called the 'target type'. 
+	  
+	 T t = <LambdaExpression>;
+
+      --> T must be a functional interface type
+	  --> The lambda expression has the same number
+    	  and type of parameters as the abstract method.
+	  --> The type of the returned value.
+      --> CheckedException type.	  
+	  
+	  ( Practical demo )
+	 
+
+
+	 
+	 Lambda expressions can be used only in the following contexts:
+	 
+	 a. Assignment Context :- ReferenceType variable1 = LambdaExpression;
+	 b. Method Invocation Context:- util.testJoiner(LambdaExpression);
+	 c. Return Context :- return LambdaExpression;
+	 d. Cast Context:- (Joiner) LambdaExpression;
+	 
+	 
+	  
+  -------------------------------------------------------------------------
+  
+  Functional Interface
+  ====================
+  
+  A functional interface is simply an interface 
+  that has exactly 'one' abstract method
+  
+  The following types of methods in 
+  an interface do not count for defining a functional interface:
+  
+    --> Default Methods
+	--> Static Methods
+	--> Public methods inherited from the Object class
+	
+  @FunctionalInterface Annotation	
+  
+  
+  (Practical Demo - 3)
+  
+  
+  Intersection Type and Lambda Expressions
+  ----------------------------------------
+  
+  Type1 & Type2
+  
+  ( Practical-Demo - 4 )
+ 
+  Commonly Used Functional Interfaces
+  ---------------------------------------
+  
+  Function<T,R>       R apply(T t)
+  
+  BiFunction<t,U,R>   R apply(T t,U u)
+  
+  Predicate<T>        boolean test(T t)  
+  
+  BiPredicate<T>      boolean test(T t,U u)  
+  
+  Consumer<T>         void accept(T t)
+  
+  BiConsumer<T>       void accept(T t,U u)
+  
+  UnaryOpeartor<T>    T apply(T t)
+
+  BinaryOperator<T>   T apply(T t1,T t2)
+
+  ( Practical Demo -5 )
+  
+  
+  Functional interfaces are used in two contexts by two different types of users:
+  
+	--> By the library designers for designing APIs 
+	--> By library users for using the APIs 	
+ 
+  ( Practical demo - 7 )
+  
+ ------------------------------------------------------------------------------------
+ 
+ Method References
+ =================
+ 
+ A method reference is shorthand to create a lambda expression 
+ using an existing method.
+ 
+ Using method references 
+ makes your lambda expressions more readable and concise;
+ 
+ If a lambda expression contains a body that is an expression using a method call,
+ you can use a method reference in place of that lambda expression.
+ 
+ It can only be used where a lambda expression can be used.
+ 
+ 
+ The general syntax for a method reference is
+
+ <Qualifier>::<MethodName>
+ 
+ ( demo-8 )
+ 
+ Types of Method References
+ --------------------------
+ 
+  TypeName::staticMethod
+  objectRef::instanceMethod
+  ClassName::instanceMethod
+  TypeName.super::instanceMethod
+  ClassName::new
+  ArrayTypeName::new
+  
+  (Demo-8_1 to 5)
+ 
+ 
+ 
+--------------------------------------------------------------------------------- 
+ 
+  Lexical Scoping
+  ================
+  
+  
+	demo_9
+  
+--------------------------------------------------------------------------------
+
+  Variable Capture
+  =================
+  
+  a lambda expression can access effectively finallocal variables.
+  
+  A local variable is effectively final in the following two cases:
+  
+	It is declared  final.
+	It is not declared final, but initialized only once.
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+ 
+ 
+  
+  
+	
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   
+   
+   
+
+ 
+	
+	
+ 
+ 
+  

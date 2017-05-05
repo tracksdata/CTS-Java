@@ -1,0 +1,85 @@
+
+
+
+java-tech
+---------------
+
+1. Java SE
+
+   --> stand-alone appln
+   --> n/wing appln 
+
+2. Java EE
+
+   --> web-appln
+   --> Enterprise-appln.
+
+3. Java ME
+
+4. Java Fx
+
+5. Embedded Java
+
+------------------------------------------
+
+java-lang - style
+
+"component and container" style 
+
+component --> buiness-logic
+container --> infra to run comp
+
+---------------------------------------
+
+1. Java SE
+
+   a. application    :  client-JRE
+   b. applet         :  applet-viewer / browser
+
+2. Java EE
+
+   a. web-comp ( servlet , JSP ) : web-container  ( e.g tomcat , jetty , etc... )
+   b. business-comp(EJB)         : ebj-container  ( e.g tomee , glassfish )
+
+-------------------------------------------     
+
+component   <------------> container
+              java API
+
+         
+--------------------------------------------
+
+
+
+
+Java Environment:
+-----------------
+
+
+a. development
+
+    1. Editor/IDE
+    2. JDK 1.8 
+
+b. deployment 
+
+   --> container
+
+------------------------------
+
+
+HelloWorld program
+
+
+------------------------------
+
+PATH
+
+--> platform shud know where java is
+
+CLASSPATH
+
+--> JRE shud know whete your classes are  
+
+
+---------------------------------

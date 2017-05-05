@@ -1,0 +1,15 @@
+
+
+  java.lang.Object
+  -------------------
+  
+   toString()
+   equals()
+   hashcode()
+   getClass()
+   finalize()
+   clone()
+   
+   wait()
+   notify()
+   notifyAll()

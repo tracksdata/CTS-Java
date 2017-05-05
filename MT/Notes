@@ -1,0 +1,83 @@
+
+
+     
+     
+     process vs thread
+     
+     
+     process:
+     -----------
+     
+     --> one whole execution in OS
+     --> has its own memory-area
+     --> one process can communicate with other thru OS support.
+     
+     
+     thread:
+     ----------
+     
+     --> piece of independent execution in process.
+     --> a process many threads
+     --> multiple threads can share same memory/data in a process
+     
+     
+     ---------------------------------------------------
+     
+     
+     e.g multi-threaded appln
+     
+      --> web-server
+      --> multi-media appln
+     
+      
+     adv:
+     
+     --> can utilize CPU effectively
+     --> can provide rich user experience with appln.
+     --> can execute things concurrently
+     
+     ------------------------------------------
+     
+     
+     how to implement 'Multi Threading'  in java lang ?
+     
+     using 'java.lang.Thread' class
+     
+     -----------------------------------------------
+     
+     basic steps to bring multiple threads in appln:
+     
+     1. create an instance 'Thread' class
+     2. assign work  with 'run' method ( override )
+     3. start thread     --> (new-stack)
+     4. manage thread life-cycle
+     5. stop ( on finishing work )
+     
+     ----------------------------------------------
+     
+     
+     
+     Thread scheduling methods
+     -------------------------
+     
+     
+           .sleep()
+           .yield()
+           
+           
+           .join()
+           .priority()
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     

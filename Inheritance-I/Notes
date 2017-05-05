@@ -1,0 +1,33 @@
+
+
+
+
+Inheritance:
+-------------
+
+ inheriting common state/behav
+ from more generalized-class to to sepecialized class's objs
+ 
+ why we need ?
+ 
+ --> re-use
+ --> easy to extend current system
+ 
+ -----------------------------------------
+ 
+ 
+ imp note :
+ 
+    IS-A r/s b/w two classes.
+    
+    e.g
+    
+    TechEmploye IS-A Employee
+    
+ ------------------------------------------
+ 
+ 
+ 
+ 
+ 
+    

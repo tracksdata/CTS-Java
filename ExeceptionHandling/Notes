@@ -1,0 +1,82 @@
+
+
+
+exception:
+
+  un-expected program flow-disturb.
+  
+  -------------------------------------
+  
+  some reasons for execeptions
+  
+  --> divide by zero
+  --> ArrayIndex exception
+  --> NullPointer  exceptions
+  
+  --> IO
+  
+  --> SQL
+  
+  --> Networking
+  
+  --> etc............
+  
+  -------------------------------------
+  
+  what happen if exception is thrown?
+  
+  
+ by default JRE will handle it , means terminating process.
+ 
+ --------------------------------------
+ 
+ soln : we shud handle it 
+ 
+ How to handle it?
+ 
+ using exception handler(s)
+ 
+ try,catch,finally
+ throws
+ 
+ -------------------------------------- 
+ 
+ Notes:
+ 
+ --> every exception in java-appln is an 'object' 
+     created using 'Exception' classes.
+ --> exception-obj shud contain complete details about an exception. 
+  
+  
+  --> when JRE conditions are violate d, always exception  thrown by JRE, 
+      when user conditions are failed, we shud throw exception using 'throw' keyword.
+ 
+  --------------------------------------
+  
+  
+   advantages of exception-handlers
+   --------------------------------
+  
+  1.  Separating Error-Handling Code from "Regular" Code
+  2.  Propagating Errors Up the Call Stack
+  3.  Grouping and Differentiating Error Types
+  
+  ---------------------------------------
+  
+     2-types of exceptions
+     
+     
+     1. checked exception
+     2. un-checked exception
+     
+     
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
